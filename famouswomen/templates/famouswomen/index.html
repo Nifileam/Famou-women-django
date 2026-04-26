@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for x in posts %}
+<div class="post">
+
+    {% if x.photo %}
+        <img src="{{ x.photo.url }}" class="post-img">
+    {% endif %}
+
+    <h2>{{ x.name }}</h2>
+
+    <p><b>Category:</b> {{ x.cat.name }}</p>
+    <p>{{ x.content|truncatewords:20 }}</p>
+
+    <p><b>Author:</b> {{ x.author.username|default:"Unknown" }}</p>
+    <p><b>Date:</b> {{ x.updated|date:"d-m-Y H:i" }}</p>
+
+    <a href="{{ x.get_absolute_url }}">Read more →</a>
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block navigate %}
+{%  if page_obj.has_other_pages %}
+<nav>
+    <ul>
+        {% if page_obj.has_previous %}
+        <li>
+            <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+        </li>
+        {% endif %}
+        {% for p in paginator.page_range %}
+        {% if page_obj.number == p %}
+        <li class="current">
+        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+        <li>
+            <a href="?page={{ p }}">{{ p }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li>
+            <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+{% endblock %}
