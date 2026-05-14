@@ -70,7 +70,7 @@ project/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/famous-women-django.git
+git clone https://github.com/Nifileam/Famou-women-django.git
 cd famous-women-django
 ```
 
