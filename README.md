@@ -231,7 +231,7 @@ project/
 ### 1. Клонировать репозиторий
 
 ```bash
-git clone https://github.com/ваш-username/famous-women-django.git
+git clone https://github.com/Nifileam/Famou-women-django.git
 cd famous-women-django
 ```
 
